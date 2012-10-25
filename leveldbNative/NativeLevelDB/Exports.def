@@ -1,0 +1,5 @@
+LIBRARY NativeLevelDB
+EXPORTS	
+	leveldb_open
+	leveldb_close
+	leveldb_put
