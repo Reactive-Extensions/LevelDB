@@ -215,7 +215,34 @@ using (var db = new Db(options, path))
         Console.WriteLine("get {0} => [{1}]", key[0], string.Join(",", xs));
     }
 }
+```
 
+And the implementation of the Comparator is below:
+
+```csharp
+private int LexicographicalCompare<T>(IEnumerable<T> xs, IEnumerable<T> ys)
+{
+    var comparator = System.Collections.Generic.Comparer<T>.Default;
+
+    using(var xe = xs.GetEnumerator())
+    using(var ye = ys.GetEnumerator())
+    {
+        for(;;)
+        {
+            var xh = xe.MoveNext();
+            var yh = ye.MoveNext();
+            if (xh != yh)
+                return yh ? -1 : 1;
+            if (!xh)
+                return 0;
+
+            // more elements
+            int diff = comparator.Compare(xe.Current, ye.Current);
+            if (diff != 0)
+                return diff;
+        }
+    }
+}
 ```
 
 # LICENSE #
