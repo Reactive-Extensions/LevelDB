@@ -6,6 +6,16 @@
 
 This project aims to provide .NET bindings to LevelDB in addition to making leveldb work well on Windows.
 
+# Building leveldb #
+
+See file "WINDOWS" for instructions on how to build this in Windows.
+
+- You'll need to install some [Boost libraries](www.boost.org) to build against
+- You'll need to create a Microsoft Visual C++ project to build this
+- The [WINDOWS file](https://github.com/Reactive-Extensions/LevelDB/blob/master/leveldbNative/WINDOWS) explains both of these processes.
+
+We're looking for volunteers to build a true Win32 port of LevelDB for Windows.
+
 # Getting Started #
 
 Here's how you can get started with leveldb and .NET.
